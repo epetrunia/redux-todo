@@ -1,14 +1,14 @@
 import ACTION_TYPES from './types';
 
-export const createCounterIncrementAction = () => ({
+export const increment = () => ({
   type: ACTION_TYPES.COUNTER_INCREMENT,
 });
 
-export const createCounterDecrementAction = () => ({
+export const decrement = () => ({
   type: ACTION_TYPES.COUNTER_DECREMENT,
 });
 
-export const createCounterSetStepAction = (stepValue) => ({
+export const setStep = (stepValue) => ({
   type: ACTION_TYPES.COUNTER_SET_STEP,
   step: stepValue,
 });

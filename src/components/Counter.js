@@ -1,28 +1,27 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import {
-  createCounterIncrementAction,
-  createCounterDecrementAction,
-  createCounterSetStepAction,
-} from '../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as CounterActionCreators from '../actions';
 
-function Counter(props) {
-  const { value, increment, decrement } = props;
+function Counter() {
+  const { value, step } = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
+  const { increment, decrement, setStep } = bindActionCreators(
+    CounterActionCreators,
+    dispatch
+  );
   return (
     <article>
       <h1>{value}</h1>
+      <input
+        type='number'
+        value={step}
+        onChange={({ target: { value } }) => setStep(+value)}
+      />
+      <br />
       <button onClick={decrement}>-</button>
       <button onClick={increment}>+</button>
     </article>
   );
 }
-
-const mapStateToProps = ({ counter }) => counter;
-
-const mapDispatchToProps = (dispatch) => ({
-  increment: () => dispatch(createCounterIncrementAction()),
-  decrement: () => dispatch(createCounterDecrementAction()),
-  setStep: (v) => dispatch(createCounterSetStepAction(v)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default Counter;

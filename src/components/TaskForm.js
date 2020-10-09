@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormik, useField } from 'formik';
+import { useFormik } from 'formik';
 import { connect } from 'react-redux';
 import { createAddTaskAction } from '../actions';
 
