@@ -8,7 +8,7 @@ export const createCounterDecrementAction = () => ({
   type: ACTION_TYPES.COUNTER_DECREMENT,
 });
 
-export const createCounterStStepAction = (stepValue) => ({
+export const createCounterSetStepAction = (stepValue) => ({
   type: ACTION_TYPES.COUNTER_SET_STEP,
   step: stepValue,
 });
